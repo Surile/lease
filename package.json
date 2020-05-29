@@ -1,0 +1,58 @@
+{
+    "name": "lease",
+    "version": "1.0.0",
+    "main": "main.ts",
+    "scripts": {
+        "start": "node build/main.js",
+        "dev": "nodemon src/main.ts",
+        "build": "tsc",
+        "lint": "eslint src --fix --ext .ts"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "eslint",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn lint"
+        }
+    },
+    "license": "MIT",
+    "dependencies": {
+        "apollo-errors": "^1.9.0",
+        "bcryptjs": "^2.4.3",
+        "express": "^4.17.1",
+        "helmet": "^3.22.0",
+        "jsonwebtoken": "^8.5.1",
+        "reflect-metadata": "^0.1.13",
+        "type-graphql": "^1.0.0-rc.2",
+        "typeorm": "^0.2.25"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/express": "^4.17.6",
+        "@types/graphql": "^14.5.0",
+        "@types/helmet": "^0.0.47",
+        "@types/jsonwebtoken": "^8.5.0",
+        "@types/mongoose": "^5.7.21",
+        "@types/node": "^14.0.5",
+        "@typescript-eslint/eslint-plugin": "^3.0.2",
+        "apollo-server-express": "^2.14.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "eslint": "^7.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "express-graphql": "^0.9.0",
+        "graphql": "^15.0.0",
+        "mongoose": "^5.9.16",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.4",
+        "prettier": "^2.0.5",
+        "sequelize": "^5.21.11",
+        "ts-node": "^8.10.1",
+        "typescript": "^3.9.3"
+    }
+}
