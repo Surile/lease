@@ -1,6 +1,7 @@
 /** @format */
 
 import * as jwt from 'jsonwebtoken'
+import config from '../config'
 
 export default (req: any, res: any, next: any) => {
     const authHeader = req.get('Authorization')
@@ -15,7 +16,7 @@ export default (req: any, res: any, next: any) => {
     }
     let decodedToken: any
     try {
-        decodedToken = jwt.verify(token, 'mySecretKey')
+        decodedToken = jwt.verify(token, config.jwt.tokenSecret)
     } catch (err) {
         req.isAuth = false
         return next()

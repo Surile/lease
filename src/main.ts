@@ -4,12 +4,14 @@ import express from 'express'
 import helmet from 'helmet'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import jwt from 'jsonwebtoken'
+import logger from 'morgan'
 import {ApolloServer, AuthenticationError, ApolloError} from 'apollo-server-express'
 import {createConnection} from 'typeorm'
 import {typeDefs, resolvers} from './models'
 import router from './router'
 import auth from './utils/auth'
+import config from './config'
+import log4 from './utils/log4'
 
 const startServer = async () => {
     const server = new ApolloServer({
@@ -24,6 +26,10 @@ const startServer = async () => {
     await createConnection()
 
     const app = express()
+
+    log4(app)
+
+    if (config.debug) app.use(logger('dev'))
 
     app.use(helmet())
 
