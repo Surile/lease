@@ -23,3 +23,11 @@ export interface Config {
     // // 网站的域名 [必填]
     // domain: String
 }
+
+export interface UserTypes {
+    name: string
+    email: string
+    password: string
+    avatar: string
+    age: number
+}

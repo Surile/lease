@@ -1,6 +1,6 @@
 /** @format */
 
-import {Config} from './config'
+import {Config} from '../types'
 
 let config: Config = {
     debug: false,

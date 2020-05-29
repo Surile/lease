@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 import {User} from '../../entity/User'
 import {isAuth} from '../../utils/isAuth'
 import config from '../../config'
-import {UserTypes} from './type'
+import {UserTypes} from '../../types'
 
 const jwtOption = config.jwt
 
