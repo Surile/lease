@@ -6,7 +6,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import logger from 'morgan'
 import {ApolloServer, AuthenticationError, ApolloError} from 'apollo-server-express'
-import {createConnection} from 'typeorm'
+import {createConnection, Any} from 'typeorm'
 import {typeDefs, resolvers} from './models'
 import router from './router'
 import auth from './utils/auth'
@@ -20,6 +20,15 @@ const startServer = async () => {
         debug: false,
         context: async ({req}: any) => {
             return {isAuth: req.isAuth}
+        },
+        formatError(err: any) {
+            // 自定义一些错误
+            if (err.message == 'Context creation failed: invalid token') {
+                return {message: 'invalid token', code: 401}
+            } else if (err.message == 'Context creation failed: blocked') {
+                return {message: '您的账号被禁止使用', blocked: true}
+            }
+            return err
         },
     })
 

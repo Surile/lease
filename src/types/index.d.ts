@@ -1,21 +1,32 @@
 /** @format */
 
 export interface Config {
-    debug: Boolean
-    // name: String
+    name: string
+    debug: boolean
     jwt: {
         tokenSecret: string
         expiresIn: string | number
     }
-    smtpConfig: {
-        host: String
-        port: String
-        secure: Boolean
-        auth: {
-            user: String
-            pass: String
+    email: {
+        // 内置邮件系统
+        smtpConfig?: {
+            service?: string
+            host?: string
+            port?: number
+            secure?: boolean
+            auth?: {
+                user: string
+                pass: string
+            }
+        }
+        // 第三方邮件系统
+        sendCloud?: {
+            from: string
+            apiUser: string
+            apiKey: string
         }
     }
+
     // defaultAvatar: String
     // host: String
     // // 端口 [必填]

@@ -3,6 +3,8 @@
 import {Config} from '../types'
 
 let config: Config = {
+    //
+    name: '魔道',
     debug: false,
     // 验证规则
     jwt: {
@@ -12,13 +14,13 @@ let config: Config = {
         expiresIn: '1d', // 时间
     },
     // 邮箱配置
-    smtpConfig: {
-        host: '',
-        port: '',
-        secure: true,
-        auth: {
-            user: '',
-            pass: '',
+    email: {
+        smtpConfig: {
+            service: 'QQ',
+            auth: {
+                user: '51414792@qq.com',
+                pass: 'hnalchqrsztpbidg',
+            },
         },
     },
 }
