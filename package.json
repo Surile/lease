@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "main": "main.ts",
     "scripts": {
-        "start": "babel-node build/main.js",
+        "start": "node build/main.js",
         "dev": "cross-env NODE_ENV=development nodemon src/main.ts",
         "build": "tsc",
         "lint": "eslint src --fix --ext .ts",
