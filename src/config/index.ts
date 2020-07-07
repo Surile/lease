@@ -1,6 +1,6 @@
 /** @format */
 
-import {Config} from '../types'
+import {Config} from '../types';
 
 const config: Config = {
     //
@@ -23,11 +23,11 @@ const config: Config = {
             },
         },
     },
-}
+};
 
 if (process.env.NODE_ENV == 'development') {
-    config.debug = true
+    config.debug = true;
     // config.mongodbDebug = true;
 }
 
-export default config
+export default config;

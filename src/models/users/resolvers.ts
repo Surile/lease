@@ -1,13 +1,13 @@
 /** @format */
 
-import {ApolloError} from 'apollo-server-express'
-import {hash, compare} from 'bcryptjs'
-import jwt from 'jsonwebtoken'
-import {User} from '../../entity/User'
-import {isAuth} from '../../utils/isAuth'
-import * as Email from '../../utils/email'
-import config from '../../config'
-import {UserTypes} from '../../types'
+import {ApolloError} from 'apollo-server-express';
+import {hash, compare} from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import {User} from '../../entity/User';
+import {isAuth} from '../../utils/isAuth';
+import * as Email from '../../utils/email';
+import config from '../../config';
+import {UserTypes} from '../../types';
 
 const generateEmailHTMLContent = (content: string) => {
     return (
@@ -70,30 +70,30 @@ const generateEmailHTMLContent = (content: string) => {
         '</tr>' +
         '<tr height="32px"></tr>' +
         '</table>'
-    )
-}
+    );
+};
 
-const jwtOption = config.jwt
+const jwtOption = config.jwt;
 
 const fetchUsers = async (_: any, {offset = 0, limit = 10}, context: any) => {
-    isAuth(context)
+    isAuth(context);
     if (offset < 0 || limit < 0) {
         new ApolloError('参数范围错误', '404', {
             offset: offset,
             limit: limit,
-        })
+        });
     }
-    return await User.find()
-}
+    return await User.find();
+};
 
 const Register = async (_: any, args: any, context: any) => {
-    const {name, email, password, avatar, age} = args
+    const {name, email, password, avatar, age} = args;
 
     const user: UserTypes | undefined = await User.findOne({
         where: {
             email,
         },
-    })
+    });
 
     const content =
         '<div style="font-size:18px;">尊敬的 ' +
@@ -104,7 +104,7 @@ const Register = async (_: any, args: any, context: any) => {
         '<span style="background:#eaffd2; padding:10px; border:1px solid #cbf59e; color:#68a424; font-size:30px; display:block; margin:10px 0 10px 0;">' +
         111 +
         '</span>' +
-        '<div>请注意: 为了保障您帐号的安全性，验证码15分钟后过期，请尽快验证!</div>'
+        '<div>请注意: 为了保障您帐号的安全性，验证码15分钟后过期，请尽快验证!</div>';
 
     const emailOptions = {
         from: '"魔道官方团队"<51414792@qq.com>',
@@ -112,11 +112,11 @@ const Register = async (_: any, args: any, context: any) => {
         subject: '账号注册',
         text: content,
         html: generateEmailHTMLContent(content),
-    }
+    };
 
     if (!user) {
-        const hashedPassword = await hash(password, 13)
-        const res: any = await Email.send(emailOptions)
+        const hashedPassword = await hash(password, 13);
+        const res: any = await Email.send(emailOptions);
         if (res.messageId) {
             try {
                 await User.insert({
@@ -125,56 +125,56 @@ const Register = async (_: any, args: any, context: any) => {
                     password: hashedPassword,
                     avatar,
                     age,
-                })
+                });
 
-                return true
+                return true;
             } catch (error) {
-                throw new ApolloError('注册失败，请稍后再试')
+                throw new ApolloError('注册失败，请稍后再试');
             }
         }
     } else {
-        throw new ApolloError('邮箱已注册')
+        throw new ApolloError('邮箱已注册');
     }
-}
+};
 
 const Login = async (_: any, args: any, context: any) => {
-    const {email, password} = args
+    const {email, password} = args;
     const user = await User.findOne({
         where: {
             email,
         },
-    })
+    });
 
     if (!user) {
-        throw new Error('未找该用户~')
+        throw new Error('未找该用户~');
     }
 
-    const verify = compare(password, user.password)
+    const verify = compare(password, user.password);
 
     if (!verify) {
-        throw new Error('密码错误~')
+        throw new Error('密码错误~');
     }
 
     const token = jwt.sign({user: user}, jwtOption.tokenSecret, {
         expiresIn: jwtOption.expiresIn,
-    })
+    });
 
     return {
         accessToken: token,
-    }
-}
+    };
+};
 
 const getUser = async (_: any, args: any, {req}: any) => {
-    const {id} = args
-    return await User.findOne({where: {id: id}})
-}
+    const {id} = args;
+    return await User.findOne({where: {id: id}});
+};
 
 export const Query = {
     getUser,
     fetchUsers,
-}
+};
 
 export const Mutation = {
     Register,
     Login,
-}
+};

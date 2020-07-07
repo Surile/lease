@@ -1,31 +1,31 @@
 /** @format */
 
 export interface Config {
-    name: string
-    debug: boolean
+    name: string;
+    debug: boolean;
     jwt: {
-        tokenSecret: string
-        expiresIn: string | number
-    }
+        tokenSecret: string;
+        expiresIn: string | number;
+    };
     email: {
         // 内置邮件系统
         smtpConfig?: {
-            service?: string
-            host?: string
-            port?: number
-            secure?: boolean
+            service?: string;
+            host?: string;
+            port?: number;
+            secure?: boolean;
             auth?: {
-                user: string
-                pass: string
-            }
-        }
+                user: string;
+                pass: string;
+            };
+        };
         // 第三方邮件系统
         sendCloud?: {
-            from: string
-            apiUser: string
-            apiKey: string
-        }
-    }
+            from: string;
+            apiUser: string;
+            apiKey: string;
+        };
+    };
 
     // defaultAvatar: String
     // host: String
@@ -36,9 +36,9 @@ export interface Config {
 }
 
 export interface UserTypes {
-    name: string
-    email: string
-    password: string
-    avatar: string
-    age: number
+    name: string;
+    email: string;
+    password: string;
+    avatar: string;
+    age: number;
 }

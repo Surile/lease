@@ -1,9 +1,9 @@
 /** @format */
 
-import express from 'express'
+import express from 'express';
 
 export default () => {
-    const router = express.Router()
+    const router = express.Router();
 
     router.get('/', async (req: any, res: any) => {
         const text = `
@@ -19,9 +19,9 @@ export default () => {
             </ul>
           </li>
         </ul>
-      `
-        res.send(text)
-    })
+      `;
+        res.send(text);
+    });
 
-    return router
-}
+    return router;
+};

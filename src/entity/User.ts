@@ -1,24 +1,24 @@
 /** @format */
 
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from 'typeorm'
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @Column()
-    name: string
+    name: string;
 
     @Column()
-    avatar: string
+    avatar: string;
 
     @Column()
-    age: number
+    age: number;
 
     @Column()
-    password: string
+    password: string;
 
     @Column()
-    email: string
+    email: string;
 }

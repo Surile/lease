@@ -1,7 +1,7 @@
 /** @format */
 
-import {gql} from 'apollo-server-express'
-import * as user from './users'
+import {gql} from 'apollo-server-express';
+import * as user from './users';
 
 export const typeDefs = gql`
     ${user.typedefs.Schema}
@@ -13,7 +13,7 @@ export const typeDefs = gql`
     type Mutation {
         ${user.typedefs.Mutation}
     }
-`
+`;
 
 export const resolvers = {
     Query: {
@@ -22,4 +22,4 @@ export const resolvers = {
     Mutation: {
         ...user.resolvers.Mutation,
     },
-}
+};
