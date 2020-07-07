@@ -12,8 +12,7 @@
     "lint-staged": {
         "*.ts": [
             "prettier --write .",
-            "yarn lint",
-            "git add"
+            "yarn lint"
         ]
     },
     "husky": {

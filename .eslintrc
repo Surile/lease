@@ -14,8 +14,16 @@
         "@typescript-eslint/semi": ["error"],
         "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/no-unused-vars": ["error", {"argsIgnorePattern": "^_"}],
-        "@typescript-eslint/no-explicit-any": 1,
-        "no-case-declarations": 0
+        "@typescript-eslint/no-explicit-any": 0,
+        "no-case-declarations": 0,
+        "@typescript-eslint/no-unsafe-call": 0,
+        "@typescript-eslint/no-unsafe-member-access": 0,
+        "@typescript-eslint/no-unsafe-return": 0,
+        "@typescript-eslint/no-unsafe-assignment": 0,
+        "@typescript-eslint/restrict-plus-operands": 0,
+        "@typescript-eslint/no-floating-promises": 0,
+        "prefer-rest-params": "off",
+        "@typescript-eslint/no-misused-promises": 0
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

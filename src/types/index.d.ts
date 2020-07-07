@@ -42,3 +42,7 @@ export interface UserTypes {
     avatar: string;
     age: number;
 }
+
+export interface isAuthTypes {
+    isAuth: boolean;
+}

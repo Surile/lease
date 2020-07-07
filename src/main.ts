@@ -5,8 +5,8 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
-import {ApolloServer, AuthenticationError, ApolloError} from 'apollo-server-express';
-import {createConnection, Any} from 'typeorm';
+import {ApolloServer} from 'apollo-server-express';
+import {createConnection} from 'typeorm';
 import {typeDefs, resolvers} from './models';
 import router from './router';
 import auth from './utils/auth';
@@ -18,7 +18,7 @@ const startServer = async () => {
         typeDefs,
         resolvers,
         debug: false,
-        context: async ({req}: any) => {
+        context: (req: any) => {
             return {isAuth: req.isAuth};
         },
         formatError(err: any) {

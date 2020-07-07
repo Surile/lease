@@ -86,7 +86,7 @@ const fetchUsers = async (_: any, {offset = 0, limit = 10}, context: any) => {
     return await User.find();
 };
 
-const Register = async (_: any, args: any, context: any) => {
+const Register = async (_: any, args: any) => {
     const {name, email, password, avatar, age} = args;
 
     const user: UserTypes | undefined = await User.findOne({
@@ -137,7 +137,7 @@ const Register = async (_: any, args: any, context: any) => {
     }
 };
 
-const Login = async (_: any, args: any, context: any) => {
+const Login = async (_: any, args: any) => {
     const {email, password} = args;
     const user = await User.findOne({
         where: {
@@ -164,7 +164,7 @@ const Login = async (_: any, args: any, context: any) => {
     };
 };
 
-const getUser = async (_: any, args: any, {req}: any) => {
+const getUser = async (_: any, args: any) => {
     const {id} = args;
     return await User.findOne({where: {id: id}});
 };

@@ -5,7 +5,7 @@ import express from 'express';
 export default () => {
     const router = express.Router();
 
-    router.get('/', async (req: any, res: any) => {
+    router.get('/', (req: any, res: any) => {
         const text = `
         <p>API服务运行中...</p>
         <p>文档额外补充信息</p>
