@@ -95,7 +95,7 @@ const Register = async (_: any, args: any, context: any) => {
         },
     })
 
-    let content =
+    const content =
         '<div style="font-size:18px;">尊敬的 ' +
         name +
         '，您好！</div>' +
@@ -106,7 +106,7 @@ const Register = async (_: any, args: any, context: any) => {
         '</span>' +
         '<div>请注意: 为了保障您帐号的安全性，验证码15分钟后过期，请尽快验证!</div>'
 
-    let emailOptions = {
+    const emailOptions = {
         from: '"魔道官方团队"<51414792@qq.com>',
         to: email,
         subject: '账号注册',
@@ -116,7 +116,7 @@ const Register = async (_: any, args: any, context: any) => {
 
     if (!user) {
         const hashedPassword = await hash(password, 13)
-        let res: any = await Email.send(emailOptions)
+        const res: any = await Email.send(emailOptions)
         if (res.messageId) {
             try {
                 await User.insert({

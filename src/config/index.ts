@@ -2,7 +2,7 @@
 
 import {Config} from '../types'
 
-let config: Config = {
+const config: Config = {
     //
     name: '魔道',
     debug: false,

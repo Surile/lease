@@ -3,7 +3,7 @@
 import config from '../config/index'
 import nodemailer from 'nodemailer'
 
-let smtpTransport = nodemailer.createTransport(config.email.smtpConfig)
+const smtpTransport = nodemailer.createTransport(config.email.smtpConfig)
 
 interface options {
     from: string
