@@ -1,7 +1,7 @@
 /** @format */
 
-import {AuthenticationError} from 'apollo-server-express'
+import {AuthenticationError} from 'apollo-server-express';
 
 export const isAuth = (context: any) => {
-    if (!context.isAuth) throw new AuthenticationError('invalid token')
-}
+    if (!context.isAuth) throw new AuthenticationError('invalid token');
+};

@@ -2,7 +2,7 @@
 
 // https://github.com/log4js-node/log4js-node
 
-import log4js from 'log4js'
+import log4js from 'log4js';
 
 export default (app: any): void => {
     log4js.configure({
@@ -57,7 +57,7 @@ export default (app: any): void => {
                 level: 'all',
             },
         },
-    })
+    });
 
-    app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}))
-}
+    app.use(log4js.connectLogger(log4js.getLogger('http'), {level: 'auto'}));
+};
