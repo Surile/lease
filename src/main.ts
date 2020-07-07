@@ -18,13 +18,13 @@ const startServer = async () => {
         typeDefs,
         resolvers,
         debug: false,
-        context: (req: any) => {
+        context: ({req}: any) => {
             return {isAuth: req.isAuth};
         },
         formatError(err: any) {
             // 自定义一些错误
             if (err.message == 'Context creation failed: invalid token') {
-                return {message: 'invalid token', code: 401};
+                return {message: '无权访问', code: 401};
             } else if (err.message == 'Context creation failed: blocked') {
                 return {message: '您的账号被禁止使用', blocked: true};
             }
