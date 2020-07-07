@@ -10,9 +10,15 @@
     },
     "lint-staged": {
         "*.ts": [
-            "prettier --write .",
-            "yarn lint"
+            "prettier --write '**/*.{ts}'",
+            "yarn lint",
+            "git add"
         ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     },
     "license": "MIT",
     "dependencies": {
