@@ -6,11 +6,12 @@
         "start": "babel-node build/main.js",
         "dev": "cross-env NODE_ENV=development nodemon src/main.ts",
         "build": "tsc",
-        "lint": "eslint src --fix --ext .ts"
+        "lint": "eslint src --fix --ext .ts",
+        "format": "prettier --write ."
     },
     "lint-staged": {
         "*.ts": [
-            "prettier --write '**/*.{ts}'",
+            "prettier --write .",
             "yarn lint",
             "git add"
         ]
